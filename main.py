@@ -15,7 +15,7 @@ ap.add_argument("-b", "--baseurl", required=True,
    help="second operand")
 
 ap.add_argument("-p", "--filepath", required=False,
-   help="second operand")
+   help="second operand",default="" )
 
 args = vars(ap.parse_args())
 
@@ -29,4 +29,5 @@ while(True) :
         break
     else :
         response = post_prompt(args['baseurl'], args['apikey'], args['filepath'], history, prompt)
-        print(response)
+        history = response["history"]
+        print(response["message"]["content"])
